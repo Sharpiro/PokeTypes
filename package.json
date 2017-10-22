@@ -4,15 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack",
-    "server": "./node_modules/.bin/webpack-dev-server --progress --colors --content-base static/"
+    "build": "./node_modules/.bin/webpack --config webpack.prod.js",
+    "server": "./node_modules/.bin/webpack-dev-server --progress --colors --config webpack.dev.js --content-base static/"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "ts-loader": "^2.3.7",
     "typescript": "^2.5.3",
+    "uglifyjs-webpack-plugin": "^1.0.0-beta.3",
     "webpack": "^3.7.1",
-    "webpack-dev-server": "^2.9.2"
+    "webpack-dev-server": "^2.9.2",
+    "webpack-merge": "^4.1.0"
   }
 }
