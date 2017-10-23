@@ -1,6 +1,7 @@
 
-#include "../Node.h"
 #include "../PokeType.h"
+#include "../Node.h"
+#include "../NeighborNode.h"
 #include <iostream>
 
 typedef unsigned char byte;
@@ -67,61 +68,6 @@ float getDataFromMatrix2(PokeType moveType, PokeType pokeType) {
 	return array2[18 * moveType + pokeType];
 }
 
-class Node
-{
-public:
-	PokeType Type;
-	Node *Neighbor;
-
-	Node(PokeType pokeType)
-	{
-		Type = pokeType;
-	}
-
-	void Node::AddNeighbor(Node *newNeighbor)
-	{
-		if (Neighbor == nullptr)
-		{
-			Neighbor = newNeighbor;
-		}
-		else
-		{
-			Neighbor->AddNeighbor(newNeighbor);
-		}
-	}
-
-	virtual void Node::Print()
-	{
-		std::cout << Type << std::endl;
-		if (Neighbor == nullptr) return;
-		Neighbor->Print();
-	}
-};
-
-class NeighborNode : public Node
-{
-public:
-	float Data;
-
-	NeighborNode(PokeType pokeType, float data) : Node(pokeType)
-	{
-		Data = data;
-	}
-
-	void NeighborNode::Print()
-	{
-		std::cout << Type << ": " << Data << std::endl;
-		if (Neighbor == nullptr) return;
-		Neighbor->Print();
-	}
-
-	float NeighborNode::GetMultiplier(PokeType pokeType) {
-		if (Type == pokeType) return Data;
-		if (Neighbor == nullptr) return 1;
-		return ((NeighborNode*)Neighbor)->GetMultiplier(pokeType);
-	}
-};
-
 void verifyList(Node* nodes[]) {
 	auto temp = nodes[1];
 	for (int i = 0; i < 18; i++)
@@ -130,12 +76,11 @@ void verifyList(Node* nodes[]) {
 		{
 			auto moveType = (PokeType)i;
 			auto pokeType = (PokeType)j;
-			//auto matrixData = getDataFromMatrix(moveType, pokeType);
-			auto matrixData = getMap(getDataFromMatrix2(moveType, pokeType));
+			auto matrixData1 = getDataFromMatrix(moveType, pokeType);
+			auto matrixData2 = getMap(getDataFromMatrix2(moveType, pokeType));
 			auto listData = ((NeighborNode*)nodes[i]->Neighbor)->GetMultiplier(pokeType);
-			auto temp = 5;
 
-			if (matrixData != listData)
+			if (matrixData1 != listData && listData != matrixData2)
 			{
 				std::cout << "error" << std::endl;
 			}
