@@ -1,5 +1,3 @@
-#include <iostream>
-#include "PokeType.h"
 #include "Node.h"
 
 Node::Node(PokeType pokeType)

@@ -5,8 +5,9 @@
 class NeighborNode : public Node
 {
 public:
-	float Data;
-	NeighborNode(PokeType pokeType, float data);
+	byte Data;
+	NeighborNode(PokeType pokeType, byte data);
 	void Print();
 	float GetMultiplier(PokeType pokeType);
+	static float GetMap(byte x);
 };

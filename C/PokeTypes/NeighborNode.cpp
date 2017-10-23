@@ -1,8 +1,7 @@
 #pragma once
-
 #include "NeighborNode.h"
 
-NeighborNode::NeighborNode(PokeType pokeType, float data) : Node(pokeType)
+NeighborNode::NeighborNode(PokeType pokeType, byte data) : Node(pokeType)
 {
 	Data = data;
 }
@@ -15,7 +14,17 @@ void NeighborNode::Print()
 }
 
 float NeighborNode::GetMultiplier(PokeType pokeType) {
-	if (Type == pokeType) return Data;
-	if (Neighbor == nullptr) return 1;
+	if (Type == pokeType) return GetMap(Data);
+	if (Neighbor == nullptr) return GetMap(2);
 	return ((NeighborNode*)Neighbor)->GetMultiplier(pokeType);
+}
+
+float NeighborNode::GetMap(byte x) {
+	switch (x) {
+	case 0: return 0;
+	case 1: return 0.5;
+	case 2: return 1;
+	case 3: return 2;
+	default: return -1;
+	}
 }
