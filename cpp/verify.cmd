@@ -1,0 +1,1 @@
+arduino_debug.exe --pref build.path=C:\gitbase\PokeTypes\C\PokeTypes\arduinoBuild --board arduino:avr:uno --verify C:\gitbase\PokeTypes\C\PokeTypes\main.ino --save-prefs
