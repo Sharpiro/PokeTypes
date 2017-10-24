@@ -1,5 +1,4 @@
 #pragma once
-#include <iostream>
 #include "PokeType.h"
 
 class Node
@@ -9,5 +8,5 @@ public:
 	Node *Neighbor;
 	Node(PokeType pokeType);
 	void AddNeighbor(Node *newNeighbor);
-	virtual void Node::Print();
+	virtual void GetNeighbors(Node* x[15], int currentIndex);
 };

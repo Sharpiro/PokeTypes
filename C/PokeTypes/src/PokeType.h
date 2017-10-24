@@ -1,5 +1,4 @@
 #pragma once
-
 typedef unsigned char byte;
 
 enum PokeType : byte

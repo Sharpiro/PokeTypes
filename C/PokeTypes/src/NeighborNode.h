@@ -1,5 +1,4 @@
 #pragma once
-#include <iostream>
 #include "Node.h"
 
 class NeighborNode : public Node
@@ -7,7 +6,7 @@ class NeighborNode : public Node
 public:
 	byte Data;
 	NeighborNode(PokeType pokeType, byte data);
-	void Print();
 	float GetMultiplier(PokeType pokeType);
 	static float GetMap(byte x);
+	void GetNeighbors(NeighborNode* x[15], int currentIndex);
 };

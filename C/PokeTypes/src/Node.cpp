@@ -17,9 +17,9 @@ void Node::AddNeighbor(Node *newNeighbor)
 	}
 }
 
-void Node::Print()
+void Node::GetNeighbors(Node* x[15], int currentIndex)
 {
-	std::cout << Type << std::endl;
 	if (Neighbor == nullptr) return;
-	Neighbor->Print();
+	x[currentIndex] = Neighbor;
+	Neighbor->GetNeighbors(x, ++currentIndex);
 }

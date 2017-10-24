@@ -20,21 +20,20 @@ void verifyList(AdjacencyList* adjacencyList, AdjacencyMatrix* adjacencyMatrix) 
 			}
 		}
 	}
+	std::cout << "verified poke data" << std::endl;
 }
 
 int main()
 {
-	try {
-		auto adjacencyList = new AdjacencyList();
-		auto matrix = new AdjacencyMatrix();
+	auto adjacencyList = new AdjacencyList();
+	auto matrix = new AdjacencyMatrix();
 
-		verifyList(adjacencyList, matrix);
+	verifyList(adjacencyList, matrix);
 
-	}
-	catch (int e) {
-		std::cout << "Exception: " << e;
-		return e;
-	}
+	Node* x[15];
+	auto eleNode = adjacencyList->GetNode(PokeType::ELE);
+	eleNode->GetNeighbors(x, 0);
+
 	std::cout << "completed";
 	std::cin.get();
 	return 0;

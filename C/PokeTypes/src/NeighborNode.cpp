@@ -6,13 +6,6 @@ NeighborNode::NeighborNode(PokeType pokeType, byte data) : Node(pokeType)
 	Data = data;
 }
 
-void NeighborNode::Print()
-{
-	std::cout << Type << ": " << Data << std::endl;
-	if (Neighbor == nullptr) return;
-	Neighbor->Print();
-}
-
 float NeighborNode::GetMultiplier(PokeType pokeType) {
 	if (Type == pokeType) return GetMap(Data);
 	if (Neighbor == nullptr) return GetMap(2);
@@ -27,4 +20,12 @@ float NeighborNode::GetMap(byte x) {
 	case 3: return 2;
 	default: return -1;
 	}
+}
+
+void NeighborNode::GetNeighbors(NeighborNode* x[15], int currentIndex)
+{
+	if (Neighbor == nullptr) return;
+	auto castedNeighbor = (NeighborNode*)Neighbor;
+	x[currentIndex] = castedNeighbor;
+	castedNeighbor->GetNeighbors(x, ++currentIndex);
 }
