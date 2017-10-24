@@ -1,5 +1,5 @@
-#include "../AdjacencyList.h"
-#include "../AdjacencyMatrix.h"
+#include "AdjacencyList.h"
+#include "AdjacencyMatrix.h"
 #include <iostream>
 
 void verifyList(AdjacencyList* adjacencyList, AdjacencyMatrix* adjacencyMatrix) {
@@ -24,11 +24,17 @@ void verifyList(AdjacencyList* adjacencyList, AdjacencyMatrix* adjacencyMatrix) 
 
 int main()
 {
-	auto adjacencyList = new AdjacencyList();
-	auto matrix = new AdjacencyMatrix();
+	try {
+		auto adjacencyList = new AdjacencyList();
+		auto matrix = new AdjacencyMatrix();
 
-	verifyList(adjacencyList, matrix);
+		verifyList(adjacencyList, matrix);
 
+	}
+	catch (int e) {
+		std::cout << "Exception: " << e;
+		return e;
+	}
 	std::cout << "completed";
 	std::cin.get();
 	return 0;

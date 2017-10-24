@@ -18,33 +18,33 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Node.cpp">
+    <ClCompile Include="src\AdjacencyList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NeighborNode.cpp">
+    <ClCompile Include="src\AdjacencyMatrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AdjacencyList.cpp">
+    <ClCompile Include="src\NeighborNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AdjacencyMatrix.cpp">
+    <ClCompile Include="src\Node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Node.h">
+    <ClInclude Include="src\AdjacencyList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PokeType.h">
+    <ClInclude Include="src\AdjacencyMatrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NeighborNode.h">
+    <ClInclude Include="src\NeighborNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AdjacencyList.h">
+    <ClInclude Include="src\Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AdjacencyMatrix.h">
+    <ClInclude Include="src\PokeType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -111,18 +111,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AdjacencyList.cpp" />
-    <ClCompile Include="AdjacencyMatrix.cpp" />
-    <ClCompile Include="NeighborNode.cpp" />
-    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="src\AdjacencyList.cpp" />
+    <ClCompile Include="src\AdjacencyMatrix.cpp" />
+    <ClCompile Include="src\NeighborNode.cpp" />
+    <ClCompile Include="src\Node.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AdjacencyList.h" />
-    <ClInclude Include="AdjacencyMatrix.h" />
-    <ClInclude Include="NeighborNode.h" />
-    <ClInclude Include="Node.h" />
-    <ClInclude Include="PokeType.h" />
+    <ClInclude Include="src\AdjacencyList.h" />
+    <ClInclude Include="src\AdjacencyMatrix.h" />
+    <ClInclude Include="src\NeighborNode.h" />
+    <ClInclude Include="src\Node.h" />
+    <ClInclude Include="src\PokeType.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
