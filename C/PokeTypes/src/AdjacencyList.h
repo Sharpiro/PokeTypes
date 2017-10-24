@@ -4,7 +4,6 @@
 class AdjacencyList
 {
 public:
-	int temp;
 	Node* nodes[18];
 	AdjacencyList();
 	Node* GetNode(PokeType pokeType);

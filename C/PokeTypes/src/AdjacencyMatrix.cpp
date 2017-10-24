@@ -1,11 +1,11 @@
 #include "AdjacencyMatrix.h"
 
 float AdjacencyMatrix::GetDataFromMatrix(PokeType moveType, PokeType pokeType) {
-	return array1[18 * moveType + pokeType];
+	return multiplierMarix[18 * moveType + pokeType];
 }
 
 float AdjacencyMatrix::GetDataFromMatrix2(PokeType moveType, PokeType pokeType) {
-	return GetMap(array2[18 * moveType + pokeType]);
+	return GetMap(mapMarix[18 * moveType + pokeType]);
 }
 
 float AdjacencyMatrix::GetMap(byte x) {
