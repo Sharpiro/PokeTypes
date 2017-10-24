@@ -1,6 +1,6 @@
-#include "src/AdjacencyList.h"
-#include "src/AdjacencyMatrix.h"
-#include "src/Console.h"
+#include "AdjacencyList.h"
+#include "AdjacencyMatrix.h"
+#include "Console.h"
 
 void verifyList(AdjacencyList* adjacencyList, AdjacencyMatrix* adjacencyMatrix);
 
