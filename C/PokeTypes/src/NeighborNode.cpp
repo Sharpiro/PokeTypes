@@ -1,4 +1,3 @@
-#pragma once
 #include "NeighborNode.h"
 
 NeighborNode::NeighborNode(PokeType pokeType, byte data) : Node(pokeType)

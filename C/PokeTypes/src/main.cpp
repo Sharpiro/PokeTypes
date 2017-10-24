@@ -1,6 +1,6 @@
 #include "AdjacencyList.h"
 #include "AdjacencyMatrix.h"
-#include <iostream>
+// #include <iostream>
 
 void verifyList(AdjacencyList* adjacencyList, AdjacencyMatrix* adjacencyMatrix) {
 	for (int i = 0; i < 18; i++)
@@ -16,11 +16,11 @@ void verifyList(AdjacencyList* adjacencyList, AdjacencyMatrix* adjacencyMatrix) 
 
 			if (matrixData1 != listData1 && listData1 != matrixData2 && matrixData2 != listData2)
 			{
-				std::cout << "error" << std::endl;
+				// std::cout << "error" << std::endl;
 			}
 		}
 	}
-	std::cout << "verified poke data" << std::endl;
+	// std::cout << "verified poke data" << std::endl;
 }
 
 int main()
@@ -34,7 +34,7 @@ int main()
 	auto eleNode = adjacencyList->GetNode(PokeType::ELE);
 	eleNode->GetNeighbors(x, 0);
 
-	std::cout << "completed";
-	std::cin.get();
+	// std::cout << "completed";
+	// std::cin.get();
 	return 0;
 }
