@@ -119,9 +119,9 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Logger.h" />
     <ClInclude Include="src\AdjacencyList.h" />
     <ClInclude Include="src\AdjacencyMatrix.h" />
+    <ClInclude Include="src\Console.h" />
     <ClInclude Include="src\NeighborNode.h" />
     <ClInclude Include="src\Node.h" />
     <ClInclude Include="src\PokeType.h" />
