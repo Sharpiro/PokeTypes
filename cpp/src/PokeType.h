@@ -22,3 +22,15 @@ enum PokeType : byte
 	STE, //16
 	FAI	 //17
 };
+
+enum State : byte
+{
+	Main,
+	PokeTypes
+};
+
+enum PokeTypesState : byte
+{
+	Move,
+	Type
+};

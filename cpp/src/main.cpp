@@ -1,5 +1,7 @@
 #include "AdjacencyList.h"
 #include "Console.h"
+#include <iostream>
+#include <string>
 
 //void verifyList(AdjacencyList* adjacencyList, AdjacencyMatrix* adjacencyMatrix) {
 //	for (int i = 0; i < 18; i++)
@@ -22,10 +24,39 @@
 //	Console::WriteLine("verified poke data");
 //}
 
+auto adjacencyList = new AdjacencyList();
+
+const char pokeTypeStrings[18][4] = {
+	"NOR",
+	"FIR",
+	"WAT",
+	"ELE",
+	"GRA",
+	"ICE",
+	"FIG",
+	"POI",
+	"GRO",
+	"FLY",
+	"PSY",
+	"BUG",
+	"ROC",
+	"GHO",
+	"DRA",
+	"DAR",
+	"STE",
+	"FAI"
+};
+
+const char* getEnumMap(byte pokeType)
+{
+	auto type = pokeTypeStrings[pokeType];
+	return type;
+}
+
 State gameState;
 PokeTypesState pokeTypesState;
-int move;
-int type;
+PokeType move;
+PokeType type;
 
 void onMainState()
 {
@@ -66,10 +97,13 @@ void onPokeTypeState()
 void pokeTypesComplete()
 {
 	Console::Write("move: ");
-	Console::WriteLine((PokeType)move);
+	Console::WriteLine(getEnumMap(move));
 	Console::Write("type: ");
-	Console::WriteLine((PokeType)type);
-	Console::WriteLine("severity is 0.5 (not true)");
+	Console::WriteLine(getEnumMap(type));
+	auto multiplier = adjacencyList->GetAttackMultiplier(move, type);
+	auto data = std::to_string(multiplier);
+	auto cppString = data.c_str();
+	Console::WriteLine(cppString);
 	onMovesState();
 }
 
@@ -84,11 +118,11 @@ void handlePokeTypesState(int input)
 	switch (pokeTypesState)
 	{
 	case PokeTypesState::Move:
-		move = input;
+		move = (PokeType)input;
 		onPokeTypeState();
 		break;
 	case PokeTypesState::Type:
-		type = input;
+		type = (PokeType)input;
 		pokeTypesComplete();
 		break;
 	}
@@ -109,24 +143,12 @@ void gameLoop(int input)
 
 int main()
 {
-	//auto adjacencyList = new AdjacencyList();
-	//auto matrix = new AdjacencyMatrix();
-
-	//verifyList(adjacencyList, matrix);
-
-	//Node* neighbors[15];
-	//auto eleNode = adjacencyList->GetNode(Enums::ELE);
-	//eleNode->GetNeighbors(neighbors, 0);
-
-	//Console::WriteLine("completed");
-	//Console::ReadInt();
-	//return 0;
 	onMainState();
 
 	while (true)
 	{
 		int input = Console::ReadInt();
-		
+
 		gameLoop(input);
 	}
 }
