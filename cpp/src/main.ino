@@ -2,7 +2,7 @@
 #include "AdjacencyMatrix.h"
 #include "Console.h"
 
-void verifyList(AdjacencyList* adjacencyList, AdjacencyMatrix* adjacencyMatrix);
+void verifyList(AdjacencyList *adjacencyList, AdjacencyMatrix *adjacencyMatrix);
 
 void setup()
 {
@@ -11,15 +11,15 @@ void setup()
 
 	verifyList(adjacencyList, matrix);
 
-	Node* neighbors[15];
+	Node *neighbors[15];
 	auto eleNode = adjacencyList->GetNode(PokeType::ELE);
 	eleNode->GetNeighbors(neighbors, 0);
 
-	Console::Log("completed");
+	Console::WriteLine("completed");
 	Console::Get();
 }
 
 void loop()
 {
-  // put your main code here, to run repeatedly:
+	// put your main code here, to run repeatedly:
 }
