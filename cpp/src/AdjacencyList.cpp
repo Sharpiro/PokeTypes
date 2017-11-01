@@ -187,6 +187,6 @@ float AdjacencyList::GetAttackMultiplier(PokeType moveType, PokeType pokeType)
 {
 	auto moveNode = nodes[moveType];
 	auto pokeNode = nodes[pokeType];
-	auto multiplier = ((NeighborNode*)moveNode)->GetMultiplier(pokeType);
+	auto multiplier = ((NeighborNode*)moveNode->Neighbor)->GetMultiplier(pokeType);
 	return multiplier;
 }
