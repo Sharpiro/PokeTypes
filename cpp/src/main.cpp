@@ -1,7 +1,8 @@
+#ifdef Windows
 #include "AdjacencyList.h"
 #include "Console.h"
-#include <iostream>
 #include <string>
+#include <iostream>
 
 //void verifyList(AdjacencyList* adjacencyList, AdjacencyMatrix* adjacencyMatrix) {
 //	for (int i = 0; i < 18; i++)
@@ -24,56 +25,56 @@
 //	Console::WriteLine("verified poke data");
 //}
 
-auto adjacencyList = new AdjacencyList();
+AdjacencyList* adjacencyList;
 
-const char pokeTypeStrings[18][4] = {
-	"NOR",
-	"FIR",
-	"WAT",
-	"ELE",
-	"GRA",
-	"ICE",
-	"FIG",
-	"POI",
-	"GRO",
-	"FLY",
-	"PSY",
-	"BUG",
-	"ROC",
-	"GHO",
-	"DRA",
-	"DAR",
-	"STE",
-	"FAI"
-};
+//const char pokeTypeStrings[18][4] = {
+//	"NOR",
+//	"FIR",
+//	"WAT",
+//	"ELE",
+//	"GRA",
+//	"ICE",
+//	"FIG",
+//	"POI",
+//	"GRO",
+//	"FLY",
+//	"PSY",
+//	"BUG",
+//	"ROC",
+//	"GHO",
+//	"DRA",
+//	"DAR",
+//	"STE",
+//	"FAI"
+//};
+//
+//const char* getEnumMap(byte pokeType)
+//{
+//	auto type = pokeTypeStrings[pokeType];
+//	return type;
+//}
 
-const char* getEnumMap(byte pokeType)
-{
-	auto type = pokeTypeStrings[pokeType];
-	return type;
-}
-
-State gameState;
-PokeTypesState pokeTypesState;
+pokeTypes::State gameState;
+pokeTypes::PokeTypesState pokeTypesState;
 PokeType move;
 PokeType type;
 
 void onMainState()
 {
-	gameState = State::Main;
+	gameState = pokeTypes::State::Main;
 	Console::WriteLine("Entered main state");
 	Console::WriteLine("Press 1 for PokeTypes program");
 }
 
 void onMovesState()
 {
-	pokeTypesState = PokeTypesState::Move;
+	pokeTypesState = pokeTypes::PokeTypesState::Move;
 	Console::WriteLine("Enter move type");
 }
 
 void OnPokeState()
 {
-	gameState = State::PokeTypes;
+	gameState = pokeTypes::State::PokeTypes;
 	Console::WriteLine("Entered PokeTypes state");
 	onMovesState();
 }
@@ -82,7 +83,7 @@ void handleMainStateInput(int input)
 {
 	switch (input)
 	{
-	case State::PokeTypes:
+	case pokeTypes::State::PokeTypes:
 		OnPokeState();
 		break;
 	}
@@ -90,16 +91,16 @@ void handleMainStateInput(int input)
 
 void onPokeTypeState()
 {
-	pokeTypesState = PokeTypesState::Type;
+	pokeTypesState = pokeTypes::PokeTypesState::Type;
 	Console::WriteLine("Enter poke type");
 }
 
 void pokeTypesComplete()
 {
 	Console::Write("move: ");
-	Console::WriteLine(getEnumMap(move));
+	Console::WriteLine(pokeTypes::getEnumMap(move));
 	Console::Write("type: ");
-	Console::WriteLine(getEnumMap(type));
+	Console::WriteLine(pokeTypes::getEnumMap(type));
 	auto multiplier = adjacencyList->GetAttackMultiplier(move, type);
 	auto data = std::to_string(multiplier);
 	auto cppString = data.c_str();
@@ -111,17 +112,17 @@ void handlePokeTypesState(int input)
 {
 	if (input < 0)
 	{
-		pokeTypesState = PokeTypesState::Move;
+		pokeTypesState = pokeTypes::PokeTypesState::Move;
 		onMainState();
 		return;
 	}
 	switch (pokeTypesState)
 	{
-	case PokeTypesState::Move:
+	case pokeTypes::PokeTypesState::Move:
 		move = (PokeType)input;
 		onPokeTypeState();
 		break;
-	case PokeTypesState::Type:
+	case pokeTypes::PokeTypesState::Type:
 		type = (PokeType)input;
 		pokeTypesComplete();
 		break;
@@ -132,10 +133,10 @@ void gameLoop(int input)
 {
 	switch (gameState)
 	{
-	case State::Main:
+	case pokeTypes::State::Main:
 		handleMainStateInput(input);
 		break;
-	case State::PokeTypes:
+	case pokeTypes::State::PokeTypes:
 		handlePokeTypesState(input);
 		break;
 	}
@@ -143,6 +144,7 @@ void gameLoop(int input)
 
 int main()
 {
+	adjacencyList = AdjacencyList::Create();
 	onMainState();
 
 	while (true)
@@ -152,3 +154,4 @@ int main()
 		gameLoop(input);
 	}
 }
+#endif

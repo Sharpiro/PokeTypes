@@ -1,5 +1,6 @@
 #pragma once
 typedef unsigned char byte;
+typedef signed char sbyte;
 
 enum PokeType : byte
 {
@@ -20,8 +21,36 @@ enum PokeType : byte
 	DRA, //14
 	DAR, //15
 	STE, //16
-	FAI	 //17
+	FAI  //17
 };
+
+namespace pokeTypes
+{
+
+const char pokeTypeStrings[18][4] = {
+	"NOR",
+	"FIR",
+	"WAT",
+	"ELE",
+	"GRA",
+	"ICE",
+	"FIG",
+	"POI",
+	"GRO",
+	"FLY",
+	"PSY",
+	"BUG",
+	"ROC",
+	"GHO",
+	"DRA",
+	"DAR",
+	"STE",
+	"FAI"};
+
+inline const char *getEnumMap(byte pokeType)
+{
+	return pokeTypeStrings[pokeType];
+}
 
 enum State : byte
 {
@@ -34,3 +63,4 @@ enum PokeTypesState : byte
 	Move,
 	Type
 };
+}

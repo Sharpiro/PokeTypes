@@ -3,9 +3,12 @@
 
 class AdjacencyList
 {
+private:
+	AdjacencyList();
+
 public:
 	Node* nodes[18];
-	AdjacencyList();
+	static AdjacencyList* Create();
 	Node* GetNode(PokeType pokeType);
 	float GetAttackMultiplier(PokeType moveType, PokeType pokeType);
 };
