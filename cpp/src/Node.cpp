@@ -3,6 +3,7 @@
 Node::Node(PokeType pokeType)
 {
 	Type = pokeType;
+	Neighbor = nullptr;
 }
 
 void Node::AddNeighbor(Node *newNeighbor)
