@@ -7,5 +7,5 @@ const int btnNone = 5;
 
 namespace lcdKeys
 {
-int read_LCD_buttons(int analogValue);
+  int read_LCD_buttons(int analogValue);
 }
